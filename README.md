@@ -1,8 +1,8 @@
 # Scaffold Testbed — Acme Support
 
-[![llmci Evals](https://github.com/alexminnaar/scaffold-testbed/actions/workflows/llmci.yml/badge.svg)](https://github.com/alexminnaar/scaffold-testbed/actions/workflows/llmci.yml)
+[![llmci Evals](https://github.com/alexminnaar/llmci-testbed/actions/workflows/llmci.yml/badge.svg)](https://github.com/alexminnaar/llmci-testbed/actions/workflows/llmci.yml)
 
-Realistic customer monorepo for dogfooding [`llmci`](https://pypi.org/project/llmci/) ([source](https://github.com/alexminnaar/scaffold)). Fictional company **Acme Support** runs ticket classification, RAG helpdesk, summarization QA, and a support agent — all evaluable with `llmci run`.
+Realistic customer monorepo for dogfooding [`llmci`](https://pypi.org/project/llmci/) ([source](https://github.com/alexminnaar/llmci)). Fictional company **Acme Support** runs ticket classification, RAG helpdesk, summarization QA, and a support agent — all evaluable with `llmci run`.
 
 ## Prerequisites
 
@@ -19,7 +19,7 @@ CI runs `pip install --upgrade llmci` (requires 0.1.1+ for merged PR comment sli
 **Scaffold developers only** — unreleased CLI changes:
 
 ```bash
-pip install "llmci @ git+https://github.com/alexminnaar/scaffold@main"
+pip install "llmci @ git+https://github.com/alexminnaar/llmci@main"
 ```
 
 ## Quick start
@@ -82,7 +82,7 @@ CLASSIFIER_URL=http://localhost:8000 MOCK_LLM=1 llmci run
 
 ## Links
 
-- [llmci on GitHub](https://github.com/alexminnaar/scaffold)
+- [llmci on GitHub](https://github.com/alexminnaar/llmci)
 - [llmci on PyPI](https://pypi.org/project/llmci/)
 
 ## Demo regression branches
