@@ -8,7 +8,7 @@ version = "0.1.0"
 description = "Realistic services for dogfooding Scaffold"
 requires-python = ">=3.11"
 dependencies = [
-  "llmci>=0.1.0",
+  "llmci>=0.1.1",
   "fastapi>=0.110",
   "uvicorn>=0.27",
   "httpx>=0.27",

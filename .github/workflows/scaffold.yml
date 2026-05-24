@@ -53,6 +53,7 @@ jobs:
         env:
           MOCK_LLM: "1"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SCAFFOLD_REPORT_SLICE: ${{ matrix.service }}/${{ matrix.config }}
         run: |
           ARGS="--config ${{ matrix.config }}"
           if [ "${{ github.event_name }}" = "push" ] && [ "${{ github.ref }}" = "refs/heads/main" ]; then
