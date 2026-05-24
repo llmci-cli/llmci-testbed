@@ -4,8 +4,6 @@
 
 Realistic customer monorepo for dogfooding [`llmci`](https://pypi.org/project/llmci/) ([source](https://github.com/alexminnaar/scaffold)). Fictional company **Acme Support** runs ticket classification, RAG helpdesk, summarization QA, and a support agent — all evaluable with `llmci run`.
 
-**Implementation spec:** [TESTBED_OUTLINE.md](https://github.com/alexminnaar/scaffold/blob/main/TESTBED_OUTLINE.md) in the main llmci repo.
-
 ## Prerequisites
 
 - Python 3.11+
