@@ -14,7 +14,7 @@ make install
 # or: pip install -e ".[dev]"
 ```
 
-CI runs `pip install --upgrade llmci` (requires 0.1.6+ for native alternate config support).
+CI runs `pip install --upgrade llmci` (requires 0.1.8+ for native alternate config discovery and filtering).
 
 **Scaffold developers only** — unreleased CLI changes:
 
@@ -35,6 +35,23 @@ Use `llmci run --config` from each service directory when a service has multiple
 
 ```bash
 MOCK_LLM=1 llmci run --config llmci-prompt.yaml
+```
+
+## Discover Configs
+
+List all eval configs in the monorepo:
+
+```bash
+llmci discover
+```
+
+Run a safe subset with filters. This example runs service configs but skips real LLM judge configs:
+
+```bash
+MOCK_LLM=1 llmci run --all \
+  --include "services/**" \
+  --exclude "services/summarizer/llmci.yaml" \
+  --exclude "services/support-agent/llmci-single-full.yaml"
 ```
 
 ## Services
