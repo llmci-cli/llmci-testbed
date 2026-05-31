@@ -11,7 +11,7 @@ From `services/ticket-classifier/`:
 MOCK_LLM=1 llmci run
 
 # Prompt-level (classification only)
-MOCK_LLM=1 ../../shared/scripts/llmci_run.sh --config llmci-prompt.yaml
+MOCK_LLM=1 llmci run --config llmci-prompt.yaml
 ```
 
 ## Start HTTP server

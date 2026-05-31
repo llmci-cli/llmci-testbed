@@ -14,7 +14,7 @@ make install
 # or: pip install -e ".[dev]"
 ```
 
-CI runs `pip install --upgrade llmci` (requires 0.1.5+ to match the current scaffold release).
+CI runs `pip install --upgrade llmci` (requires 0.1.6+ for native alternate config support).
 
 **Scaffold developers only** — unreleased CLI changes:
 
@@ -29,12 +29,12 @@ make install
 make eval-classifier
 ```
 
-## Alternate config files
+## Alternate Config Files
 
-The `llmci` CLI does not yet support `llmci run --config`. Use the wrapper from each service directory:
+Use `llmci run --config` from each service directory when a service has multiple eval configs:
 
 ```bash
-MOCK_LLM=1 ../../shared/scripts/llmci_run.sh --config llmci-prompt.yaml
+MOCK_LLM=1 llmci run --config llmci-prompt.yaml
 ```
 
 ## Services

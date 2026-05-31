@@ -61,4 +61,4 @@ jobs:
           else
             ARGS="$ARGS --compare-to=origin/main"
           fi
-          ../../shared/scripts/llmci_run.sh $ARGS
+          llmci run $ARGS

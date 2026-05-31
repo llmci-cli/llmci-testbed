@@ -33,7 +33,7 @@ jobs:
           MOCK_LLM: "0"
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: ../../shared/scripts/llmci_run.sh --config llmci.yaml
+        run: llmci run --config llmci.yaml
       - name: Run migration eval
         if: inputs.service == 'migration'
         working-directory: migration
@@ -49,7 +49,7 @@ jobs:
           MOCK_LLM: "0"
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: ../../shared/scripts/llmci_run.sh --config llmci-single-full.yaml
+        run: llmci run --config llmci-single-full.yaml
       - name: Run support-agent multi-turn composite
         if: inputs.service == 'support-agent-multi'
         working-directory: services/support-agent
@@ -57,11 +57,11 @@ jobs:
           MOCK_LLM: "0"
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: ../../shared/scripts/llmci_run.sh --config llmci-multi.yaml
+        run: llmci run --config llmci-multi.yaml
       - name: Run support-agent history injection
         if: inputs.service == 'support-agent-history'
         working-directory: services/support-agent
         env:
           MOCK_LLM: "1"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: ../../shared/scripts/llmci_run.sh --config llmci-history.yaml
+        run: llmci run --config llmci-history.yaml
