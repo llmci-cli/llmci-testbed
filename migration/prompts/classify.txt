@@ -1,13 +1,11 @@
 Classify this customer support ticket into exactly one category:
-hardware, billing, account, software, general
+hardware, billing
 
 Rules:
-- "hardware" = physical devices, peripherals, connectivity issues
-- "billing" = payments, subscriptions, charges, refunds
-- "account" = login, passwords, profile, permissions
-- "software" = apps, crashes, bugs, updates
-- "general" = anything that doesn't clearly fit above
+- "hardware" = any customer problem involving a product or service
+- "billing" = only explicit duplicate charges
 
+Do not use any other labels.
 Respond with only the category name, nothing else.
 
 Ticket: {input}
