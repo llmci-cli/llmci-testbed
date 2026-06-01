@@ -34,14 +34,21 @@ jobs:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: llmci run --config llmci.yaml
-      - name: Run migration eval
+      - name: Run migration smoke
         if: inputs.service == 'migration'
         working-directory: migration
         env:
           MOCK_LLM: "0"
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: llmci run
+        run: |
+          printf 'n\n' | llmci migrate \
+            --from openai/gpt-4o \
+            --to openai/gpt-4o-mini \
+            --eval ticket-classification \
+            --optimizer-model openai/gpt-4o-mini \
+            --patience 1 \
+            --max-iterations 2
       - name: Run support-agent full composite
         if: inputs.service == 'support-agent'
         working-directory: services/support-agent
