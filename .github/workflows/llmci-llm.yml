@@ -59,8 +59,9 @@ jobs:
             --optimizer-model openai/gpt-4o-mini \
             --patience 3 \
             --max-iterations 3 | tee migration-hard.log
-          grep -q "Iteration 1/" migration-hard.log
-          grep -q "Final holdout on target model" migration-hard.log
+          grep -q -- "- Iterations:" migration-hard.log
+          grep -q -- "- Holdout score:" migration-hard.log
+          grep -q "| 1 |" migration-hard.log
       - name: Run support-agent full composite
         if: inputs.service == 'support-agent'
         working-directory: services/support-agent

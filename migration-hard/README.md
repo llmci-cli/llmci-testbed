@@ -17,4 +17,4 @@ printf 'n\n' | llmci migrate \
   --max-iterations 3
 ```
 
-The workflow smoke test checks that migration output includes at least one iteration and a final holdout score.
+The workflow smoke test checks that migration output includes an iteration summary, a holdout score, and at least one iteration-history row.
