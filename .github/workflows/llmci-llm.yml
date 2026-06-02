@@ -27,6 +27,9 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install -e ".[dev]" && pip install --upgrade llmci
+      - name: Install llmci from main for hard migration smoke
+        if: inputs.service == 'migration-hard'
+        run: pip install --upgrade "llmci @ git+https://github.com/llmci-cli/llmci@main"
       - name: Run summarizer eval
         if: inputs.service == 'summarizer'
         working-directory: services/summarizer
@@ -59,8 +62,8 @@ jobs:
             --optimizer-model openai/gpt-4o-mini \
             --patience 3 \
             --max-iterations 3 | tee migration-hard.log
-          grep -q -- "- Iterations:" migration-hard.log
-          grep -q -- "- Holdout score:" migration-hard.log
+          grep -q "Iteration 1/" migration-hard.log
+          grep -q "Final holdout on target model" migration-hard.log
           grep -q "| 1 |" migration-hard.log
       - name: Run support-agent full composite
         if: inputs.service == 'support-agent'
