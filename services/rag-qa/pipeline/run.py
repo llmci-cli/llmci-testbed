@@ -17,9 +17,13 @@ from retrieve import retrieve  # noqa: E402
 
 def run_pipeline(input_data: dict) -> dict:
     query = input_data["input"]
-    docs = retrieve(query)
+    doc_ids, docs = retrieve(query)
     answer = generate(query, docs)
-    return {"output": answer}
+    return {
+        "output": answer,
+        "contexts": docs,
+        "retrieved_ids": doc_ids,
+    }
 
 
 def main() -> None:

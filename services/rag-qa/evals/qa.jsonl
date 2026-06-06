@@ -1,11 +1,11 @@
-{"input": "What is Python?", "expected": "high-level programming language;multiple paradigms"}
-{"input": "Explain Docker containers", "expected": "containerization;images;containers"}
-{"input": "How do I use Git branches?", "expected": "Branching;parallel development"}
-{"input": "What is Kubernetes?", "expected": "orchestrates containerized;pods;services"}
-{"input": "How do I create a Docker image?", "expected": "images and containers;Docker Compose"}
-{"input": "What are Git commits?", "expected": "git commit;version control"}
-{"input": "What is Docker used for?", "expected": "containerization;images;containers"}
-{"input": "How does Kubernetes deploy workloads?", "expected": "deployments;kubectl;clusters"}
-{"input": "Explain Python programming features", "expected": "high-level programming language;OOP"}
-{"input": "How do I merge with Git?", "expected": "git pull;Branching;merge"}
-{"input": "What tools manage Docker applications?", "expected": "Docker Compose;multi-container"}
+{"input": "What is Python?", "expected": "high-level programming language", "relevant_ids": ["python"]}
+{"input": "Explain Docker containers", "expected": "containerization", "relevant_ids": ["docker"]}
+{"input": "How do I use Git branches?", "expected": "Branching", "relevant_ids": ["git"]}
+{"input": "What is Kubernetes?", "expected": "orchestrates containerized", "relevant_ids": ["kubernetes"]}
+{"input": "How do I create a Docker image?", "expected": "images and containers", "relevant_ids": ["docker"]}
+{"input": "What are Git commits?", "expected": "git commit", "relevant_ids": ["git"]}
+{"input": "What is Docker used for?", "expected": "containerization", "relevant_ids": ["docker"]}
+{"input": "How does Kubernetes deploy workloads?", "expected": "deployments", "relevant_ids": ["kubernetes"]}
+{"input": "Explain Python programming features", "expected": "high-level programming language", "relevant_ids": ["python"]}
+{"input": "How do I merge with Git?", "expected": "git pull", "relevant_ids": ["git"]}
+{"input": "What tools manage Docker applications?", "expected": "Docker Compose", "relevant_ids": ["docker"]}

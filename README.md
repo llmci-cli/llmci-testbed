@@ -14,7 +14,7 @@ make install
 # or: pip install -e ".[dev]"
 ```
 
-CI runs `pip install --upgrade llmci` (requires 0.1.8+ for native alternate config discovery and filtering).
+CI runs `pip install --upgrade llmci` (requires 0.3.0+ for built-in RAG/safety judges, cost metrics, and integrated CI gates).
 
 **Scaffold developers only** — unreleased CLI changes:
 
@@ -59,10 +59,10 @@ MOCK_LLM=1 llmci run --all \
 | Service | Path | Docs case study | Scaffold example |
 |---------|------|-----------------|------------------|
 | Ticket classifier | `services/ticket-classifier/` | FastAPI Service | `examples/08-fastapi-service` |
-| RAG QA | `services/rag-qa/` | RAG Pipeline | `examples/07-pipeline-level` |
+| RAG QA | `services/rag-qa/` | RAG Pipeline | `examples/12-rag-retrieval` |
 | Summarizer | `services/summarizer/` | Summarization QA | `examples/09-summarization-qa` |
 | Support agent | `services/support-agent/` | Support Agent | `examples/05`, `06` |
-| JSON API | `services/json-api/` | Custom judge | `examples/04-custom-judge` |
+| JSON API | `services/json-api/` | Exact-match validation | `examples/01-prompt-level` |
 | Model migration | `migration/` | Multi-Model Migration | `examples/02-model-migration` |
 
 ## Mock vs real LLM
@@ -80,7 +80,7 @@ CI runs all services in mock mode with `--compare-to=origin/main` on PRs. Use **
 make eval-all
 ```
 
-Covers the same 7 eval configs as the CI matrix.
+Covers the same 8 eval configs as the CI matrix (including the integrated quality + cost + safety gate on ticket-classifier).
 
 ## HTTP testing (ticket classifier)
 
@@ -109,7 +109,7 @@ Open PRs from these branches to see Scaffold fail CI and post a PR comment:
 | Branch | Change | Expected failure |
 |--------|--------|------------------|
 | `test/break-classifier` | Remove billing keywords | `service-classification` accuracy |
-| `test/break-rag-retrieval` | Force empty retrieval | `rag-qa` pass_rate |
+| `test/break-rag-retrieval` | Force empty retrieval | `rag-qa` retrieval_recall |
 | `test/break-agent-safety` | Agent calls `delete_account` on normal queries | `support-agent-single` mean_score |
 
 ```bash

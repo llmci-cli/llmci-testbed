@@ -7,10 +7,7 @@ evals:
   - name: api-json-validation
     level: prompt
     dataset: ./evals/api_responses.jsonl
-    judge:
-      type: custom
-      module: ./json_judge.py
-      function: judge
+    judge: exact_match
     metrics:
       - name: accuracy
         threshold: 1.0

@@ -38,7 +38,15 @@ def main() -> None:
     else:
         category = classify(data["input"])["category"]
 
-    Path(args.output).write_text(json.dumps({"output": category}))
+    text = data["input"]
+    tokens_in = max(40, len(text) * 3)
+    tokens_out = 8
+    cost = round(tokens_in * 0.000002 + tokens_out * 0.000006, 6)
+    Path(args.output).write_text(json.dumps({
+        "output": category,
+        "usage": {"tokens_in": tokens_in, "tokens_out": tokens_out},
+        "cost": cost,
+    }))
 
 
 if __name__ == "__main__":

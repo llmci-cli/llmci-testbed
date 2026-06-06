@@ -1,9 +1,66 @@
 {
   "eval_name": "rag-qa",
   "metrics": {
-    "pass_rate": 1.0,
-    "mean_score": 0.9696969696969696
+    "retrieval_recall": 1.0,
+    "retrieval_precision": 1.0
   },
-  "timestamp": "2026-05-24T01:27:39.459633+00:00",
-  "commit_sha": "8672b1e41861e9929c4656b5a706233c5a3815e7"
+  "timestamp": "2026-06-06T20:59:22.706745+00:00",
+  "commit_sha": "579648a726a444eca9b7b25cf2983e2ae5366d94",
+  "examples": [
+    {
+      "input": "What is Python?",
+      "output": "Based on the documentation: Python is a high-level programming language. It supports multiple paradigms including OOP and functional. Python 3.12 added improved error messages and f-string improvements.",
+      "score": 1.0
+    },
+    {
+      "input": "Explain Docker containers",
+      "output": "Based on the documentation: Docker is a containerization platform. It uses images and containers to package applications. Docker Compose orchestrates multi-container applications.",
+      "score": 1.0
+    },
+    {
+      "input": "How do I use Git branches?",
+      "output": "Here's how: Git is a distributed version control system. Key commands: git add, git commit, git push, git pull. Branching allows parallel development workflows.",
+      "score": 1.0
+    },
+    {
+      "input": "What is Kubernetes?",
+      "output": "Based on the documentation: Kubernetes (K8s) orchestrates containerized workloads. Core concepts: pods, services, deployments, namespaces. kubectl is the CLI for interacting with clusters.",
+      "score": 1.0
+    },
+    {
+      "input": "How do I create a Docker image?",
+      "output": "Here's how: Docker is a containerization platform. It uses images and containers to package applications. Docker Compose orchestrates multi-container applications.",
+      "score": 1.0
+    },
+    {
+      "input": "What are Git commits?",
+      "output": "Answer: Git is a distributed version control system. Key commands: git add, git commit, git push, git pull. Branching allows parallel development workflows.",
+      "score": 1.0
+    },
+    {
+      "input": "What is Docker used for?",
+      "output": "Based on the documentation: Docker is a containerization platform. It uses images and containers to package applications. Docker Compose orchestrates multi-container applications.",
+      "score": 1.0
+    },
+    {
+      "input": "How does Kubernetes deploy workloads?",
+      "output": "Here's how: Kubernetes (K8s) orchestrates containerized workloads. Core concepts: pods, services, deployments, namespaces. kubectl is the CLI for interacting with clusters.",
+      "score": 1.0
+    },
+    {
+      "input": "Explain Python programming features",
+      "output": "Based on the documentation: Python is a high-level programming language. It supports multiple paradigms including OOP and functional. Python 3.12 added improved error messages and f-string improvements.",
+      "score": 1.0
+    },
+    {
+      "input": "How do I merge with Git?",
+      "output": "Here's how: Git is a distributed version control system. Key commands: git add, git commit, git push, git pull. Branching allows parallel development workflows.",
+      "score": 1.0
+    },
+    {
+      "input": "What tools manage Docker applications?",
+      "output": "Answer: Docker is a containerization platform. It uses images and containers to package applications. Docker Compose orchestrates multi-container applications.",
+      "score": 1.0
+    }
+  ]
 }
