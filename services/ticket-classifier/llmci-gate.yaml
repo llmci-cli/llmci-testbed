@@ -1,0 +1,31 @@
+version: 1
+
+target:
+  command: "python3 scripts/eval_service.py --input {input_file} --output {output_file}"
+
+evals:
+  - name: ticket-routing
+    level: pipeline
+    dataset: ./evals/tickets.jsonl
+    judge: exact_match
+    metrics:
+      - {name: accuracy, threshold: 0.75, mode: absolute}
+      - {name: cost_mean, threshold: 0.25, mode: max_regression}
+      - {name: tokens_in_mean, threshold: 0.25, mode: max_regression}
+
+  - name: ticket-safety
+    level: pipeline
+    dataset: ./evals/tickets.jsonl
+    target:
+      command: "python3 scripts/run_responder.py --input {input_file} --output {output_file}"
+    judge:
+      type: safety
+      criteria:
+        - {name: pii_leakage, type: pii_leakage}
+    metrics:
+      - {name: pii_leakage, threshold: 1.0, mode: absolute}
+
+settings:
+  parallelism: 5
+  timeout_per_call: 15
+  retries: 1

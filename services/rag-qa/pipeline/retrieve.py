@@ -30,12 +30,14 @@ KNOWLEDGE_BASE = {
 }
 
 
-def retrieve(query: str, top_k: int = 2) -> list[str]:
+def retrieve(query: str, top_k: int = 2) -> tuple[list[str], list[str]]:
+    """Return (doc_ids, passages) ranked by keyword overlap."""
     query_lower = query.lower()
-    scored = []
-    for entry in KNOWLEDGE_BASE.values():
+    scored: list[tuple[int, str, str]] = []
+    for doc_id, entry in KNOWLEDGE_BASE.items():
         score = sum(1 for kw in entry["keywords"] if kw in query_lower)
         if score > 0:
-            scored.append((score, entry["doc"]))
+            scored.append((score, doc_id, entry["doc"]))
     scored.sort(key=lambda x: -x[0])
-    return [doc for _, doc in scored[:top_k]]
+    top = scored[:top_k]
+    return [doc_id for _, doc_id, _ in top], [doc for _, _, doc in top]

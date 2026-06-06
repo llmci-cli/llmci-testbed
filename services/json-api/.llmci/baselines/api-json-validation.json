@@ -3,6 +3,33 @@
   "metrics": {
     "accuracy": 1.0
   },
-  "timestamp": "2026-05-24T01:27:40.887797+00:00",
-  "commit_sha": "8672b1e41861e9929c4656b5a706233c5a3815e7"
+  "timestamp": "2026-06-06T20:59:30.481336+00:00",
+  "commit_sha": "579648a726a444eca9b7b25cf2983e2ae5366d94",
+  "examples": [
+    {
+      "input": "Get user profile for user_id=123",
+      "output": "{\"user_id\": 123, \"name\": \"Alice\", \"email\": \"alice@example.com\"}",
+      "score": 1.0
+    },
+    {
+      "input": "Get user profile for user_id=456",
+      "output": "{\"user_id\": 456, \"name\": \"Bob\", \"email\": \"bob@example.com\"}",
+      "score": 1.0
+    },
+    {
+      "input": "List orders for customer_id=123",
+      "output": "{\"customer_id\": 123, \"orders\": [{\"id\": 1, \"total\": 29.99}]}",
+      "score": 1.0
+    },
+    {
+      "input": "Get product details for sku=ABC-100",
+      "output": "{\"sku\": \"ABC-100\", \"name\": \"Widget\", \"price\": 9.99, \"in_stock\": true}",
+      "score": 1.0
+    },
+    {
+      "input": "Search users by name=Charlie",
+      "output": "{\"results\": [{\"user_id\": 789, \"name\": \"Charlie\"}], \"count\": 1}",
+      "score": 1.0
+    }
+  ]
 }

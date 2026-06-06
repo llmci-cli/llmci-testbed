@@ -1,4 +1,4 @@
-.PHONY: install eval-all eval-classifier eval-classifier-prompt test
+.PHONY: install eval-all eval-classifier eval-classifier-prompt eval-classifier-gate test
 
 install:
 	pip install -e ".[dev]"
@@ -9,9 +9,13 @@ eval-classifier:
 eval-classifier-prompt:
 	cd services/ticket-classifier && MOCK_LLM=1 llmci run --config llmci-prompt.yaml
 
+eval-classifier-gate:
+	cd services/ticket-classifier && MOCK_LLM=1 llmci run --config llmci-gate.yaml
+
 eval-all:
 	$(MAKE) eval-classifier
 	$(MAKE) eval-classifier-prompt
+	$(MAKE) eval-classifier-gate
 	cd services/rag-qa && MOCK_LLM=1 llmci run
 	cd services/json-api && MOCK_LLM=1 llmci run
 	cd services/support-agent && MOCK_LLM=1 llmci run --config llmci-single.yaml

@@ -8,16 +8,14 @@ evals:
     level: pipeline
     dataset: ./evals/qa.jsonl
     judge:
-      type: custom
-      module: ./rag_judge.py
-      function: evaluate
+      type: rag
+      criteria:
+        - {name: retrieval_recall, type: retrieval_recall, k: 2}
+        - {name: retrieval_precision, type: retrieval_precision, k: 2}
     metrics:
-      - name: pass_rate
-        threshold: 0.80
-        mode: absolute
-      - name: mean_score
-        threshold: 0.75
-        mode: absolute
+      - {name: retrieval_recall, threshold: 0.90, mode: absolute}
+      - {name: retrieval_precision, threshold: 0.50, mode: absolute}
+      - {name: retrieval_recall, threshold: 0.05, mode: max_regression}
 
 settings:
   parallelism: 5

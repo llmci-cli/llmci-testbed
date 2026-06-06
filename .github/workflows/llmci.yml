@@ -30,6 +30,8 @@ jobs:
             config: llmci.yaml
           - service: ticket-classifier
             config: llmci-prompt.yaml
+          - service: ticket-classifier
+            config: llmci-gate.yaml
           - service: rag-qa
             config: llmci.yaml
           - service: json-api
