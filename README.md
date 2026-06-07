@@ -113,7 +113,8 @@ Open PRs from these branches to see Scaffold fail CI and post a PR comment:
 | `test/break-agent-safety` | Agent calls `delete_account` on normal queries | `support-agent-single` mean_score |
 
 ```bash
-git checkout -b test/break-classifier
-# edit services/ticket-classifier/app/classifier.py
-git push -u origin test/break-classifier
+# Branches are pre-built — open a PR against main to see CI fail + the llmci PR comment:
+gh pr create --base main --head test/break-classifier --title "demo: break classifier"
+gh pr create --base main --head test/break-rag-retrieval --title "demo: break RAG retrieval"
+gh pr create --base main --head test/break-agent-safety --title "demo: break agent safety"
 ```
