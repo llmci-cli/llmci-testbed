@@ -14,7 +14,7 @@ make install
 # or: pip install -e ".[dev]"
 ```
 
-CI runs `pip install --upgrade llmci` (requires 0.4.0+ for cross-provider migration, PII allow-list, and integrated CI gates).
+CI runs `pip install --upgrade llmci` (requires 0.4.1+ for price overrides, cross-provider migration, and integrated CI gates).
 
 **Scaffold developers only** — unreleased CLI changes:
 
