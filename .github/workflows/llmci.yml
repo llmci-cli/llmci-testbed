@@ -84,7 +84,8 @@ jobs:
       - name: Run focused ticket classifier eval
         working-directory: services/ticket-classifier
         env:
-          MOCK_LLM: "1"
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          CLASSIFIER_MODEL: openai/gpt-4o-mini
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           LLMCI_REPORT_SLICE: ticket-classifier/llmci-prompt.yaml
         run: |
