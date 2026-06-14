@@ -1,0 +1,37 @@
+name: "Blog Example: Ticket Classifier Regression"
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/blog-ticket-classifier-regression.yml"
+      - "services/ticket-classifier/app/classifier.py"
+      - "services/ticket-classifier/app/prompts/classify.txt"
+      - "services/ticket-classifier/evals/tickets.jsonl"
+      - "services/ticket-classifier/llmci-prompt.yaml"
+      - "services/ticket-classifier/scripts/run_prompt.py"
+      - "shared/**"
+      - "pyproject.toml"
+  workflow_dispatch:
+
+jobs:
+  prompt-regression:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -e ".[dev]" && pip install --upgrade llmci
+      - name: Run focused classifier prompt eval
+        working-directory: services/ticket-classifier
+        env:
+          MOCK_LLM: "0"
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          CLASSIFIER_MODEL: openai/gpt-4o-mini
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: llmci run --config llmci-prompt.yaml --compare-to=origin/main
