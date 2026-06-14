@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -14,6 +15,34 @@ sys.path.insert(0, str(ROOT.parent.parent))
 
 from app.classifier import classify_core  # noqa: E402
 
+BILLING_TERMS = [
+    "refund",
+    "charged",
+    "charge",
+    "invoice",
+    "subscription",
+    "upgrade",
+    "cancel",
+    "payment",
+    "billing",
+    "plan",
+    "price",
+    "coupon",
+    "discount",
+    "receipt",
+    "overcharged",
+    "credit",
+    "renewal",
+    "trial",
+    "card",
+]
+
+
+def scrub_sensitive_terms(text: str) -> str:
+    for term in BILLING_TERMS:
+        text = re.sub(rf"\b{re.escape(term)}\b", "[redacted]", text, flags=re.I)
+    return re.sub(r"\$\d+(?:\.\d+)?", "[amount]", text)
+
 
 def main() -> None:
     parser = argparse.ArgumentParser()
@@ -22,7 +51,8 @@ def main() -> None:
     args = parser.parse_args()
 
     data = json.loads(Path(args.input).read_text())
-    category, _ = classify_core(data["input"])
+    sanitized_input = scrub_sensitive_terms(data["input"])
+    category, _ = classify_core(sanitized_input)
     Path(args.output).write_text(json.dumps({"output": category}))
 
 
